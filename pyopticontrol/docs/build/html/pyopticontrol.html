@@ -1,0 +1,978 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyopticontrol package &mdash; pyopticontrol 3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=110ea713"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyopticontrol
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">pyopticontrol package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pyopticontrol.CSDAESolver">pyopticontrol.CSDAESolver module</a><ul>
+<li><a class="reference internal" href="#pyopticontrol.CSDAESolver.OCPCASADI"><code class="docutils literal notranslate"><span class="pre">OCPCASADI</span></code></a><ul>
+<li><a class="reference internal" href="#pyopticontrol.CSDAESolver.OCPCASADI.algeq"><code class="docutils literal notranslate"><span class="pre">OCPCASADI.algeq()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.CSDAESolver.OCPCASADI.algjac"><code class="docutils literal notranslate"><span class="pre">OCPCASADI.algjac()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.CSDAESolver.OCPCASADI.bcjac"><code class="docutils literal notranslate"><span class="pre">OCPCASADI.bcjac()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.CSDAESolver.OCPCASADI.ode"><code class="docutils literal notranslate"><span class="pre">OCPCASADI.ode()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.CSDAESolver.OCPCASADI.odejac"><code class="docutils literal notranslate"><span class="pre">OCPCASADI.odejac()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.CSDAESolver.OCPCASADI.twobc"><code class="docutils literal notranslate"><span class="pre">OCPCASADI.twobc()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyopticontrol.DAESolver">pyopticontrol.DAESolver module</a><ul>
+<li><a class="reference internal" href="#pyopticontrol.DAESolver.BVPDAE"><code class="docutils literal notranslate"><span class="pre">BVPDAE</span></code></a><ul>
+<li><a class="reference internal" href="#pyopticontrol.DAESolver.BVPDAE.solve"><code class="docutils literal notranslate"><span class="pre">BVPDAE.solve()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.DAESolver.BVPDAE.test_jacobian"><code class="docutils literal notranslate"><span class="pre">BVPDAE.test_jacobian()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyopticontrol.DirectSolver">pyopticontrol.DirectSolver module</a><ul>
+<li><a class="reference internal" href="#pyopticontrol.DirectSolver.DirectSolver"><code class="docutils literal notranslate"><span class="pre">DirectSolver</span></code></a><ul>
+<li><a class="reference internal" href="#pyopticontrol.DirectSolver.DirectSolver.get_solution"><code class="docutils literal notranslate"><span class="pre">DirectSolver.get_solution()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.DirectSolver.DirectSolver.opti"><code class="docutils literal notranslate"><span class="pre">DirectSolver.opti()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.DirectSolver.DirectSolver.solve"><code class="docutils literal notranslate"><span class="pre">DirectSolver.solve()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.DirectSolver.DirectSolver.update_solutions"><code class="docutils literal notranslate"><span class="pre">DirectSolver.update_solutions()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyopticontrol.DirectSolver.Infos"><code class="docutils literal notranslate"><span class="pre">Infos</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyopticontrol.OptiControl">pyopticontrol.OptiControl module</a><ul>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OCP"><code class="docutils literal notranslate"><span class="pre">OCP</span></code></a><ul>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OCP.initialize"><code class="docutils literal notranslate"><span class="pre">OCP.initialize()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OCP.ode"><code class="docutils literal notranslate"><span class="pre">OCP.ode()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OCP.twobc"><code class="docutils literal notranslate"><span class="pre">OCP.twobc()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OptiControl"><code class="docutils literal notranslate"><span class="pre">OptiControl</span></code></a><ul>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OptiControl.solve"><code class="docutils literal notranslate"><span class="pre">OptiControl.solve()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OptiSol"><code class="docutils literal notranslate"><span class="pre">OptiSol</span></code></a><ul>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OptiSol.alg_sol"><code class="docutils literal notranslate"><span class="pre">OptiSol.alg_sol</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OptiSol.alg_sol_mid"><code class="docutils literal notranslate"><span class="pre">OptiSol.alg_sol_mid</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OptiSol.ode_sol"><code class="docutils literal notranslate"><span class="pre">OptiSol.ode_sol</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.OptiControl.OptiSol.time"><code class="docutils literal notranslate"><span class="pre">OptiSol.time</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyopticontrol.UtilFunctions">pyopticontrol.UtilFunctions module</a><ul>
+<li><a class="reference internal" href="#pyopticontrol.UtilFunctions.FB"><code class="docutils literal notranslate"><span class="pre">FB()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.UtilFunctions.csFB"><code class="docutils literal notranslate"><span class="pre">csFB()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.UtilFunctions.logpen"><code class="docutils literal notranslate"><span class="pre">logpen()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.UtilFunctions.matmul3d"><code class="docutils literal notranslate"><span class="pre">matmul3d()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.UtilFunctions.max_smooth"><code class="docutils literal notranslate"><span class="pre">max_smooth()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.UtilFunctions.min_smooth"><code class="docutils literal notranslate"><span class="pre">min_smooth()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.UtilFunctions.repmat"><code class="docutils literal notranslate"><span class="pre">repmat()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyopticontrol.approximate_nlse_funs">pyopticontrol.approximate_nlse_funs module</a><ul>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.NLSEInfos"><code class="docutils literal notranslate"><span class="pre">NLSEInfos</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_armijo"><code class="docutils literal notranslate"><span class="pre">approx_armijo()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_jac_res_colocation"><code class="docutils literal notranslate"><span class="pre">approx_jac_res_colocation()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_jac_res_values"><code class="docutils literal notranslate"><span class="pre">approx_jac_res_values()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_jac_res_values_deprecated"><code class="docutils literal notranslate"><span class="pre">approx_jac_res_values_deprecated()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_parab3p"><code class="docutils literal notranslate"><span class="pre">approx_parab3p()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_res_colocation"><code class="docutils literal notranslate"><span class="pre">approx_res_colocation()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_row_col_jac_indices"><code class="docutils literal notranslate"><span class="pre">approx_row_col_jac_indices()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.approx_solve_newton"><code class="docutils literal notranslate"><span class="pre">approx_solve_newton()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.approximate_nlse_funs.get_ode_ae_from_sol"><code class="docutils literal notranslate"><span class="pre">get_ode_ae_from_sol()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyopticontrol.nlse_funs">pyopticontrol.nlse_funs module</a><ul>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.NLSEInfos"><code class="docutils literal notranslate"><span class="pre">NLSEInfos</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.armijo"><code class="docutils literal notranslate"><span class="pre">armijo()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.create_new_xp_z_zmid"><code class="docutils literal notranslate"><span class="pre">create_new_xp_z_zmid()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.estimate_rms"><code class="docutils literal notranslate"><span class="pre">estimate_rms()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.get_solution_from_X"><code class="docutils literal notranslate"><span class="pre">get_solution_from_X()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.interp_hermite"><code class="docutils literal notranslate"><span class="pre">interp_hermite()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.jac_res_colocation"><code class="docutils literal notranslate"><span class="pre">jac_res_colocation()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.jac_res_values"><code class="docutils literal notranslate"><span class="pre">jac_res_values()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.ntrp3h"><code class="docutils literal notranslate"><span class="pre">ntrp3h()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.parab3p"><code class="docutils literal notranslate"><span class="pre">parab3p()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.res_colocation"><code class="docutils literal notranslate"><span class="pre">res_colocation()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.row_col_jac_indices"><code class="docutils literal notranslate"><span class="pre">row_col_jac_indices()</span></code></a></li>
+<li><a class="reference internal" href="#pyopticontrol.nlse_funs.solve_newton"><code class="docutils literal notranslate"><span class="pre">solve_newton()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyopticontrol">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyopticontrol</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">pyopticontrol package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyopticontrol.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyopticontrol-package">
+<h1>pyopticontrol package<a class="headerlink" href="#pyopticontrol-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pyopticontrol.CSDAESolver">
+<span id="pyopticontrol-csdaesolver-module"></span><h2>pyopticontrol.CSDAESolver module<a class="headerlink" href="#module-pyopticontrol.CSDAESolver" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.CSDAESolver.OCPCASADI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.CSDAESolver.</span></span><span class="sig-name descname"><span class="pre">OCPCASADI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/CSDAESolver.html#OCPCASADI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.CSDAESolver.OCPCASADI" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class links a TPBVP written in the Casadi framework into the NumPy framework to be solved using the BVPDAE class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ocp</strong> – OCP written in the Casadi framework, returning the right-hand side of the ODEs, the algebraic equations, and the boundary conditions.</p></li>
+<li><p><strong>ode_sol</strong> – NumPy array containing the ODEs’ solution.</p></li>
+<li><p><strong>alg_sol</strong> – NumPy array containing the solution of the algebraic equations.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.CSDAESolver.OCPCASADI.algeq">
+<span class="sig-name descname"><span class="pre">algeq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/CSDAESolver.html#OCPCASADI.algeq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.CSDAESolver.OCPCASADI.algeq" title="Link to this definition"></a></dt>
+<dd><p>This function returns the residual of the algbreaic equations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Numpy array of time steps at discretization points</p></li>
+<li><p><strong>ode_sol</strong> – 2d Numpy array of ODEs’solution at discretization points</p></li>
+<li><p><strong>alg_sol</strong> – 2d Numpy array of algebraic variables at discretization points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>res_alg_eq</strong>: 2d Numpy array of residual of algebraic equations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.CSDAESolver.OCPCASADI.algjac">
+<span class="sig-name descname"><span class="pre">algjac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/CSDAESolver.html#OCPCASADI.algjac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.CSDAESolver.OCPCASADI.algjac" title="Link to this definition"></a></dt>
+<dd><p>This function returns the Jacobians of the algebraix equations as three dimensional Numpy arrays</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Numpy array of discretization time steps</p></li>
+<li><p><strong>ode_sol</strong> – Numpy array of ODEs’ solution at discretization points</p></li>
+<li><p><strong>alg_sol</strong> – Numpy array of algebraic solutions at discretization points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>jac_alg_wrt_ode_sol</strong>: 3D Numpy array of algebraic equations Jacobian with respect to ode_sol at discretization points</p></li>
+<li><p><strong>jac_alg_wrt_alg_sol</strong>: 3D Numpy array of algebraic equations Jacobian with respect to alg_sol at discretization points</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.CSDAESolver.OCPCASADI.bcjac">
+<span class="sig-name descname"><span class="pre">bcjac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ode_sol_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_T</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/CSDAESolver.html#OCPCASADI.bcjac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.CSDAESolver.OCPCASADI.bcjac" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.CSDAESolver.OCPCASADI.ode">
+<span class="sig-name descname"><span class="pre">ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/CSDAESolver.html#OCPCASADI.ode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.CSDAESolver.OCPCASADI.ode" title="Link to this definition"></a></dt>
+<dd><p>This function returns the ODEs’ right hand side in NumPy array format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Numpy array of discretization time steps</p></li>
+<li><p><strong>ode_sol</strong> – Numpy array of ODEs’ solution at discretization points</p></li>
+<li><p><strong>alg_sol</strong> – Numpy array of algebraic solutions at discretization points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>rhs_ode</strong>: Numpy array of time derivative of ode_sol at discretization points</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.CSDAESolver.OCPCASADI.odejac">
+<span class="sig-name descname"><span class="pre">odejac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/CSDAESolver.html#OCPCASADI.odejac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.CSDAESolver.OCPCASADI.odejac" title="Link to this definition"></a></dt>
+<dd><p>This function returns the Jacobians of the ODEs’ right-hand side as three dimensional Numpy arrays
+:param time: Numpy array of discretization time steps
+:param ode_sol: Numpy array of ODEs’ solution at discretization points
+:param alg_sol: Numpy array of algebraic solutions at discretization points
+:return:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>jac_ode_wrt_ode_sol</strong>: 3D Numpy array of ODE’s right hand side Jacobian with respect to ode_sol at discretization points</p></li>
+<li><p><strong>jac_ode_wrt_ode_sol</strong>: 3D Numpy array of ODE’s right hand side Jacobian with respect to alg_sol at discretization points</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.CSDAESolver.OCPCASADI.twobc">
+<span class="sig-name descname"><span class="pre">twobc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ode_sol_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_T</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/CSDAESolver.html#OCPCASADI.twobc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.CSDAESolver.OCPCASADI.twobc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyopticontrol.DAESolver">
+<span id="pyopticontrol-daesolver-module"></span><h2>pyopticontrol.DAESolver module<a class="headerlink" href="#module-pyopticontrol.DAESolver" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.DAESolver.BVPDAE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.DAESolver.</span></span><span class="sig-name descname"><span class="pre">BVPDAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DAESolver.html#BVPDAE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DAESolver.BVPDAE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>This is a Two Point Boundary Value Problem solver consisting in ODEs coupled with DAEs. The parameterization of the solver is done through an options dictionnary given at instanciation containing the following items</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><strong>display</strong>:</dt><dd><p>Verbosity of the algorithm (ranging from 0 to 2). Default is 0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>check_jacobian</strong></dt><dd><p>Boolean when True checks provided Jacobian. Default is False</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>exact_prb</strong>:</dt><dd><p>Boolean when True algebraic variables are computed exactly at collocation points. If False, alg_sol_mid is interpolated.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>control_odes_error</strong>:</dt><dd><p>Boolean when True time mesh is adapted to control residual error. Default is False</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>max_mesh_point</strong>:</dt><dd><p>Maximum length of time array. Default is 1e5</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>res_tol</strong>:</dt><dd><p>residual relative error on ODEs. Default is 1e-3</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>no_mesh_reduction</strong>:</dt><dd><p>Boolean when True mesh modification can only add points., Default is False</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>threshold_mesh_reduction</strong>:</dt><dd><p>Real value in (0,1] such that mesh points are removed if ODE’s residual error is &lt;= threshold_mesh_reduction * res_tol on three consecutive time interval.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>max_NLSE_iter</strong>:</dt><dd><p>Maximum number of iteration for solving the NLSE. Default is 100 in case of mesh refinement 500 otherwise</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>max_rms_control_iter</strong>:</dt><dd><p>Maximum number of mesh modification iterations. Default is 1000</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>newton_tol</strong>:</dt><dd><p>relative tolerance of Newton scheme. Default is 1e-8</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>abs_tol</strong>:</dt><dd><p>residual absolute error on ODEs. Default is 1e-7</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>coeff_damping</strong>:</dt><dd><p>Damping coefficient of damping Newton-Raphson scheme. Default is 2.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>linear_solver</strong>:</dt><dd><p>Linear solver to be chosen among lu or umfpack. Default is umfpack</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>newton_tol</strong>:</dt><dd><p>relative tolerance of Newton scheme. Default is 1e-6</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>coeff_damping</strong>:</dt><dd><p>Damping coefficient of damping Newton scheme. Default is 2.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>max_probes</strong>:</dt><dd><p>Maximum number of damping operations for armijo step selection. Default is 6</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.DAESolver.BVPDAE.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_mid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DAESolver.html#BVPDAE.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DAESolver.BVPDAE.solve" title="Link to this definition"></a></dt>
+<dd><p>Solve the Optimal Control Problem from OCP initializing the algorithm with (time, ode_sol, alg_sol) values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – 1d-array containing time steps at discretization points</p></li>
+<li><p><strong>ode_sol</strong> – 2d-array containing the solutions of ODEs at discretization points</p></li>
+<li><p><strong>alg_sol</strong> – 2d-array containing the solutions of AEs at discretization points</p></li>
+<li><p><strong>alg_sol_mid</strong> – : 2d-array containing the solutions of AEs at collocation points (mid-interval)</p></li>
+<li><p><strong>ocp</strong> – Object representing an indirect optimal control problem</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>OptiSol , Infos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.DAESolver.BVPDAE.test_jacobian">
+<span class="sig-name descname"><span class="pre">test_jacobian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DAESolver.html#BVPDAE.test_jacobian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DAESolver.BVPDAE.test_jacobian" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyopticontrol.DirectSolver">
+<span id="pyopticontrol-directsolver-module"></span><h2>pyopticontrol.DirectSolver module<a class="headerlink" href="#module-pyopticontrol.DirectSolver" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.DirectSolver.DirectSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.DirectSolver.</span></span><span class="sig-name descname"><span class="pre">DirectSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DirectSolver.html#DirectSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DirectSolver.DirectSolver" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>options</strong> – <p>options of the solver listed as follows:</p>
+<ul class="simple">
+<li><p>display: values must be {0, 1, 2, 3} describing verbosity of the display, 0 being no display and 3 being full. Default is 0</p></li>
+<li><p>print: Boolean value authorizing printing iterations of casadi solveur. Default is False</p></li>
+<li><p>method : Discretization method, euler, rk4 or hermite_simpson. Default is hermite_simpson</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.DirectSolver.DirectSolver.get_solution">
+<span class="sig-name descname"><span class="pre">get_solution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DirectSolver.html#DirectSolver.get_solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DirectSolver.DirectSolver.get_solution" title="Link to this definition"></a></dt>
+<dd><p>This method returns the numerical solution of the optimal control problem as follows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>time, x, u, [opti_parameters]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.DirectSolver.DirectSolver.opti">
+<span class="sig-name descname"><span class="pre">opti</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">OCP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opti_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DirectSolver.html#DirectSolver.opti"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DirectSolver.DirectSolver.opti" title="Link to this definition"></a></dt>
+<dd><p>This methods builds a casadi optimization problem corresponding to the OCP provided in parameter OCP</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>OCP</strong> – Object instanciation of optimal control problem.</p></li>
+<li><p><strong>opti_parameters</strong> – Optional additional optimization parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.DirectSolver.DirectSolver.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DirectSolver.html#DirectSolver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DirectSolver.DirectSolver.solve" title="Link to this definition"></a></dt>
+<dd><p>This method solves the problem using IPOPT and returns the solution of OCP as follows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>optimal solution of the problem
+(time, x, u, done) if opti_parameters is None
+(time, x, u, opti_para, done) otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.DirectSolver.DirectSolver.update_solutions">
+<span class="sig-name descname"><span class="pre">update_solutions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opti_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DirectSolver.html#DirectSolver.update_solutions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DirectSolver.DirectSolver.update_solutions" title="Link to this definition"></a></dt>
+<dd><p>This methods initialize the optimization variables to the values given as parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – numpy array containing the time steps of the OCP</p></li>
+<li><p><strong>x</strong> – numpy array containing the state solution of the OCP</p></li>
+<li><p><strong>u</strong> – numpy array containing the control solution of the OCP</p></li>
+<li><p><strong>opti_parameters</strong> – iterable of float containing additional optimization parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.DirectSolver.Infos">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.DirectSolver.</span></span><span class="sig-name descname"><span class="pre">Infos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">done</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/DirectSolver.html#Infos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.DirectSolver.Infos" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains the BVPDAE’s numerical solving informations
+:param success: Boolean indicating if the problems is successfully solved
+:param NLSE_infos: class whose attributes gather informations on the Non-Linear Equations Solver
+:param DAE_infos: class whose attributes gather informations on the mesh refinement procedure</p>
+</dd></dl>
+
+</section>
+<section id="module-pyopticontrol.OptiControl">
+<span id="pyopticontrol-opticontrol-module"></span><h2>pyopticontrol.OptiControl module<a class="headerlink" href="#module-pyopticontrol.OptiControl" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OCP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.OptiControl.</span></span><span class="sig-name descname"><span class="pre">OCP</span></span><a class="reference internal" href="_modules/pyopticontrol/OptiControl.html#OCP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.OptiControl.OCP" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OCP.initialize">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pyopticontrol/OptiControl.html#OCP.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.OptiControl.OCP.initialize" title="Link to this definition"></a></dt>
+<dd><p>Initialize returns the following Numpy arrays
+- time : Initial time steps
+- ode_sol : Initial ODE’s solutions evaluated at time steps from time
+- alg_sol : Initial AE’s solutions evaluated at time steps from time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(time, ode_sol, alg_sol)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[np.ndarray, np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OCP.ode">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/pyopticontrol/OptiControl.html#OCP.ode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.OptiControl.OCP.ode" title="Link to this definition"></a></dt>
+<dd><p>Returns the right-hand side of the OCP’s ODEs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>np.ndarray</em>) – Time steps</p></li>
+<li><p><strong>ode_sol</strong> (<em>np.ndarray</em>) – ODE’s solution</p></li>
+<li><p><strong>alg_sol</strong> (<em>np.ndarray</em>) – AE’s solutions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>right-hand side of the OCP’s ODEs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OCP.twobc">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">twobc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ode_sol_init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/pyopticontrol/OptiControl.html#OCP.twobc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.OptiControl.OCP.twobc" title="Link to this definition"></a></dt>
+<dd><p>Returns the boundary conditions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ode_sol_init</strong> (<em>np.ndarray</em>) – ODE’s solution at initial time</p></li>
+<li><p><strong>ode_sol_final</strong> (<em>np.ndarray</em>) – ODE’s solution at final time</p></li>
+<li><p><strong>alg_sol_init</strong> (<em>np.ndarray</em>) – AE’s solution at initial time</p></li>
+<li><p><strong>alg_sol_final</strong> (<em>np.ndarray</em>) – AE’s solution at final time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>OCP’s boundary conditions</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OptiControl">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.OptiControl.</span></span><span class="sig-name descname"><span class="pre">OptiControl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ocp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyopticontrol.OptiControl.OCP" title="pyopticontrol.OptiControl.OCP"><span class="pre">OCP</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opti_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/OptiControl.html#OptiControl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.OptiControl.OptiControl" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ocp</strong> – Object instanciation describing an optimal control problem</p></li>
+<li><p><strong>options</strong> – dictionnary containing the options parametererization of the solver.</p></li>
+<li><p><strong>opti_parameters</strong> – If OCP is a direct optimization problem, one can add some additional real valued
+optimization parameters to the optimal control problem</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OptiControl.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyopticontrol.OptiControl.OptiSol" title="pyopticontrol.OptiControl.OptiSol"><span class="pre">OptiSol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">opti_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyopticontrol.OptiControl.OptiSol" title="pyopticontrol.OptiControl.OptiSol"><span class="pre">OptiSol</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pyopticontrol.DirectSolver.Infos" title="pyopticontrol.DirectSolver.Infos"><span class="pre">Infos</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Infos</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pyopticontrol/OptiControl.html#OptiControl.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.OptiControl.OptiControl.solve" title="Link to this definition"></a></dt>
+<dd><p>Solve the optimal control problem OCP provided at instanciation of class EMSOpti. If no input parameters are provided, this method calls the initialize() method of OCP problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sol</strong> – <p>object with attributes
+:time:numpy array containing optimization time stamps
+:ode_sol: numpy array containing the initial solution of OCP.ode() at time stamps provided in time
+:z : numpy array containing:</p>
+<blockquote>
+<div><ul>
+<li><p>the initial control variable if OCP is a direct optimization problem</p></li>
+<li><p>the initial solution of OCP.algeq() is if OCP is an indirect optimization problem</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>opti_parameters</strong> – Optional optimization parameters. Only availabe if OCP is a direct optimization problem</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>Optimal solutions of the problem:</p>
+<ul class="simple">
+<li><p><strong>time:</strong> numpy array containing optimization time stamps</p></li>
+<li><p><strong>ode_sol:</strong> numpy array containing the optimal solution of OCP.ode() at time stamps from time</p></li>
+<li><dl class="simple">
+<dt><strong>z:</strong> numpy array containing:</dt><dd><ul>
+<li><p>the optimal control variable if OCP is a direct optimization problem</p></li>
+<li><p>the optimal solution of OCP.algeq() is if OCP is an indirect optimization problem</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>done:</strong> informations on the optimization procedure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OptiSol">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.OptiControl.</span></span><span class="sig-name descname"><span class="pre">OptiSol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_mid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/OptiControl.html#OptiSol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.OptiControl.OptiSol" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OptiSol.alg_sol">
+<span class="sig-name descname"><span class="pre">alg_sol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyopticontrol.OptiControl.OptiSol.alg_sol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OptiSol.alg_sol_mid">
+<span class="sig-name descname"><span class="pre">alg_sol_mid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyopticontrol.OptiControl.OptiSol.alg_sol_mid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OptiSol.ode_sol">
+<span class="sig-name descname"><span class="pre">ode_sol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyopticontrol.OptiControl.OptiSol.ode_sol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyopticontrol.OptiControl.OptiSol.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyopticontrol.OptiControl.OptiSol.time" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyopticontrol.UtilFunctions">
+<span id="pyopticontrol-utilfunctions-module"></span><h2>pyopticontrol.UtilFunctions module<a class="headerlink" href="#module-pyopticontrol.UtilFunctions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.UtilFunctions.FB">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.UtilFunctions.</span></span><span class="sig-name descname"><span class="pre">FB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/UtilFunctions.html#FB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.UtilFunctions.FB" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – scalar positive variable</p></li>
+<li><p><strong>y</strong> – scalar negative variable</p></li>
+<li><p><strong>eps</strong> – scalar positive penalty parameter</p></li>
+<li><p><strong>dx</strong> – order of derivative wrt x (0, 1 value)</p></li>
+<li><p><strong>dy</strong> – order of derivative wrt y (0 or 1 value)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ficher Burmeister complementarity function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.UtilFunctions.csFB">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.UtilFunctions.</span></span><span class="sig-name descname"><span class="pre">csFB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/UtilFunctions.html#csFB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.UtilFunctions.csFB" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.UtilFunctions.logpen">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.UtilFunctions.</span></span><span class="sig-name descname"><span class="pre">logpen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/UtilFunctions.html#logpen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.UtilFunctions.logpen" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.UtilFunctions.matmul3d">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.UtilFunctions.</span></span><span class="sig-name descname"><span class="pre">matmul3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/UtilFunctions.html#matmul3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.UtilFunctions.matmul3d" title="Link to this definition"></a></dt>
+<dd><p>3D multiplication of matrices a, b</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.UtilFunctions.max_smooth">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.UtilFunctions.</span></span><span class="sig-name descname"><span class="pre">max_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/UtilFunctions.html#max_smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.UtilFunctions.max_smooth" title="Link to this definition"></a></dt>
+<dd><p>This functions returns the mu-smooth maximum of (x, y, dx=0, dy=0). If x and y are 1d-arrays, the function returns a 1d-array z s.t. z[i] = max_smooth(x[i], y[i])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – NumPy array</p></li>
+<li><p><strong>y</strong> – NumPy array</p></li>
+<li><p><strong>mu</strong> – regularisation parameter of <a href="#id1"><span class="problematic" id="id2">|.|</span></a> ~ sqrt(. ** 2 + mu)</p></li>
+<li><p><strong>d1</strong> – order of x-derivative of max_smooth</p></li>
+<li><p><strong>d2</strong> – order of y-derivative of max_smooth</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(d/dx) ** d1 * (d/dy) ** d2 * (x + y + sqrt((x-y) ** 2 + mu))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.UtilFunctions.min_smooth">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.UtilFunctions.</span></span><span class="sig-name descname"><span class="pre">min_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/UtilFunctions.html#min_smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.UtilFunctions.min_smooth" title="Link to this definition"></a></dt>
+<dd><p>This functions returns the mu-smooth maximum of (x, y, dx=0, dy=0). If x and y are 1d-arrays, the function returns a 1d-array z s.t. z[i] = max_smooth(x[i], y[i])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – NumPy array</p></li>
+<li><p><strong>y</strong> – NumPy array</p></li>
+<li><p><strong>mu</strong> – regularisation parameter of <a href="#id3"><span class="problematic" id="id4">|.|</span></a> ~ sqrt(. ** 2 + mu)</p></li>
+<li><p><strong>d1</strong> – order of x-derivative of max_smooth</p></li>
+<li><p><strong>d2</strong> – order of y-derivative of max_smooth</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(d/dx) ** d1 * (d/dy) ** d2 * (x + y - sqrt((x-y) ** 2 + mu))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.UtilFunctions.repmat">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.UtilFunctions.</span></span><span class="sig-name descname"><span class="pre">repmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rep_dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/UtilFunctions.html#repmat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.UtilFunctions.repmat" title="Link to this definition"></a></dt>
+<dd><p>This function allows to replicated a 2D-matrix A along first, second and optionally third dimension.
+:param a: Matrix to be replicated
+:param rep_dim: tuple of integer (d0, d1, [d2]) giving the number of times matrix a is replicated along each dimension
+:return: NumPy array of replicated a matrix</p>
+</dd></dl>
+
+</section>
+<section id="module-pyopticontrol.approximate_nlse_funs">
+<span id="pyopticontrol-approximate-nlse-funs-module"></span><h2>pyopticontrol.approximate_nlse_funs module<a class="headerlink" href="#module-pyopticontrol.approximate_nlse_funs" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.NLSEInfos">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">NLSEInfos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_tol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ae_residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ae_tol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bc_residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bc_tol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#NLSEInfos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.NLSEInfos" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The NLSEInfos class contains the information of the DAE’s solving and has the following attributes
+:param success: Boolean indicating if the problems is successfully solved
+:param iter: number of Newton iterations
+:param ode_residual: Residual error on for the discretization of the ODEs
+:param ode_tol: Error tolerance (mesh dependent) of the ODEs
+:param ae_residual: Residual error for the Algebraic Equations
+:param ae_tol: Error tolerance of the AEs
+:param bc_residual: Residual error for the boundary conditions
+:param bc_tol: Error tolerance for the BCs</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_armijo">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_armijo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OCP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rhsmid0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff_damping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_probes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_armijo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_armijo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_jac_res_colocation">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_jac_res_colocation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id3d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_jac</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_jac_res_colocation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_jac_res_colocation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_jac_res_values">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_jac_res_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id3d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_jac_res_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_jac_res_values" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_jac_res_values_deprecated">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_jac_res_values_deprecated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id3d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_jac_res_values_deprecated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_jac_res_values_deprecated" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_parab3p">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_parab3p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lbdc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lbdm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ff0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ffc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ffm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_parab3p"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_parab3p" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_res_colocation">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_res_colocation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_res_colocation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_res_colocation" title="Link to this definition"></a></dt>
+<dd><p>This function returns the non-linear equations corresponding to the ODE’s discretization and the AEs
+and the ODE’s RHS evaluated at collocation point.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_row_col_jac_indices">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_row_col_jac_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_odes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_aes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_row_col_jac_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_row_col_jac_indices" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.approx_solve_newton">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">approx_solve_newton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg_sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id3d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_odeis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_algis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linear_solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff_damping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_probes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">odes_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#approx_solve_newton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.approx_solve_newton" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.approximate_nlse_funs.get_ode_ae_from_sol">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.approximate_nlse_funs.</span></span><span class="sig-name descname"><span class="pre">get_ode_ae_from_sol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_odes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_aes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/approximate_nlse_funs.html#get_ode_ae_from_sol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.approximate_nlse_funs.get_ode_ae_from_sol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pyopticontrol.nlse_funs">
+<span id="pyopticontrol-nlse-funs-module"></span><h2>pyopticontrol.nlse_funs module<a class="headerlink" href="#module-pyopticontrol.nlse_funs" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.NLSEInfos">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">NLSEInfos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_tol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ae_residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ae_tol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bc_residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bc_tol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac_reuse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#NLSEInfos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.NLSEInfos" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.armijo">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">armijo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmid0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OCP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rhsmid0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff_damping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_probes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#armijo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.armijo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.create_new_xp_z_zmid">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">create_new_xp_z_zmid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun_interp_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residuals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff_reduce_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authorize_reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#create_new_xp_z_zmid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.create_new_xp_z_zmid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.estimate_rms">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">estimate_rms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#estimate_rms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.estimate_rms" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.get_solution_from_X">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">get_solution_from_X</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ne</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#get_solution_from_X"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.get_solution_from_X" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.interp_hermite">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">interp_hermite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rhs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lob</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#interp_hermite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.interp_hermite" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.jac_res_colocation">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">jac_res_colocation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id3d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_jac</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#jac_res_colocation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.jac_res_colocation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.jac_res_values">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">jac_res_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id3d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#jac_res_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.jac_res_values" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.ntrp3h">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">ntrp3h</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">newtime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tkp1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xkp1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rhsk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rhskp1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ni</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#ntrp3h"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.ntrp3h" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.parab3p">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">parab3p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lbdc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lbdm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ff0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ffc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ffm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#parab3p"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.parab3p" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.res_colocation">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">res_colocation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#res_colocation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.res_colocation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.row_col_jac_indices">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">row_col_jac_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_ode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_ae</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#row_col_jac_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.row_col_jac_indices" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyopticontrol.nlse_funs.solve_newton">
+<span class="sig-prename descclassname"><span class="pre">pyopticontrol.nlse_funs.</span></span><span class="sig-name descname"><span class="pre">solve_newton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_odeis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_algis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linear_solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff_damping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_probes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">odes_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyopticontrol/nlse_funs.html#solve_newton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyopticontrol.nlse_funs.solve_newton" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pyopticontrol">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyopticontrol" title="Link to this heading"></a></h2>
+<p>pyopticontrol is a package for solving Optimal Control Problems (OCPs). The solving methodology is automatically derived from
+the structure of the optimal control problem given as a parameter when instanciating a EMSOpti object.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Instructions for OCP structure</strong></dt><dd><ul>
+<li><dl class="simple">
+<dt><strong>Direct Optimization using casadi :</strong></dt><dd><dl class="simple">
+<dt>In this case the input parameter OCP must embed the following methods :</dt><dd><ul>
+<li><dl class="simple">
+<dt><strong>Required methods</strong> :</dt><dd><ul>
+<li><p><strong>initialize()</strong> -&gt; return (time, x, u) initial solution of OCP</p></li>
+<li><p><strong>ode(time, x, u, [opti_parameters])</strong> -&gt; returns the time derivative of vector x</p></li>
+<li><p><strong>running_cost(time, x, u, [opti_parameters])</strong> -&gt; returns the time derivative of the cost to minimized</p></li>
+<li><p><strong>twobc(x0, xT, u0, uT, [opti_parameters])</strong> -&gt; returns the boundary conditions of the OCP</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Optional methods</strong></dt><dd><ul>
+<li><p><strong>const_ineq(time, x, u, [opti_parameters])</strong> -&gt; returns c(time, x, u, [opti_parameters]) st c &lt;= 0.</p></li>
+<li><p><strong>const_eq(time, x, u, [opti_parameters])</strong> -&gt; returns c(time, x, u, [opti_parameters]) st c == 0.</p></li>
+<li><p><strong>terminal_cost(xT)</strong> -&gt; returns the terminal cost part of the objective function as a function of the state at final time</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Indirect Optimization using casadi :</strong></dt><dd><dl class="simple">
+<dt>In this situation the input parameter OCP must embed the following methods :</dt><dd><ul>
+<li><p><strong>initialize()</strong> -&gt;  returns (time, ode_sol, u) initial solution of OCP</p></li>
+<li><p><strong>ode(t, x, z):</strong> -&gt; returns a casadi vector of the size of x containing the value of the derivative of x</p></li>
+<li><p><strong>algeq(t, x, z):</strong> -&gt; returns a casadi vector of the size of z containing the algebraic equations.</p></li>
+<li><p><strong>twobc(x0, xT, z0, zT):</strong> -&gt; returns a casadi vector of the boundary conditions.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Indirect Optimization with NumPy Jacobian :</strong></dt><dd><dl class="simple">
+<dt>In this situation the input parameter OCP must embed the following methods :</dt><dd><ul>
+<li><p><strong>initialize()</strong> -&gt;  returns (time, ode_sol, u) initial solution of OCP</p></li>
+<li><p><strong>ode(t, x, z):</strong> -&gt; returns an array of the size of x containing the value of the derivative of x at each time stamp</p></li>
+<li><p><strong>algeq(t, x, z):</strong> -&gt; returns an array of the size of z containing the algebraic equations at each time stamp. The solution of the problem corresponds to finding z such that the algebraic equations are 0.</p></li>
+<li><p><strong>twobc(x0, xT, z0, zT):</strong> -&gt; returns the boundary conditions. The solution of the problem consists in finding the boundary values such that twobc is 0.</p></li>
+<li><dl class="simple">
+<dt><strong>odejac(time, x, z):</strong> -&gt; returns (Jx, Jz) two 3D arrays such that :</dt><dd><ul>
+<li><p><strong>Jx:</strong> NumPy array of size (x.shape[0], x.shape[0], len(time)). Jx[:, :, i] contains the Jacobian of the ODEs with respect to x at time t[i]</p></li>
+<li><p><strong>Jz:</strong> NumPy array of size (x.shape[0], z.shape[0], len(time)). Jz[:, :, i] contains the Jacobian of the ODEs with respect to z at time t[i]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>algjac(time, x, z):</strong> -&gt; returns (Gx, Gz) two 3D arrays such that:</dt><dd><ul>
+<li><p><strong>Gx:</strong> NumPy array of size (z.shape[0], x.shape[0], len(time)). Gx[:, :, i] contains the Jacobian of the Algebraic Equations with respect to x at time t[i]</p></li>
+<li><p><strong>Gz:</strong> NumPy array of size (z.shape[0], z.shape[0], len(time)). Gz[:, :, i] contains the Jacobian of the Algebraic Equations with respect to z at time t[i]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>bcjac(x0, xT, z0, zT):</strong> -&gt; returns four arrays containing the Jacobians of the boundary conditions as follows</dt><dd><ul>
+<li><p><strong>BCx0:</strong> Array of size (x0.shape[0], x0.shape[0]) contains the Jacobian of the boundary conditions with respect to x0</p></li>
+<li><p><strong>BCxT:</strong> Array of size (xT.shape[0], xT.shape[0]) contains the Jacobian of the boundary conditions with respect to xT</p></li>
+<li><p><strong>BCz0:</strong> Array of size (x0.shape[0], z0.shape[0]) contains the Jacobian of the boundary conditions with respect to z0</p></li>
+<li><p><strong>BCzT:</strong> Array of size (x0.shape[0], zT.shape[0]) contains the Jacobian of the boundary conditions with respect to zT</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, P. Malisani.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
