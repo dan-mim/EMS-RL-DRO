@@ -107,11 +107,11 @@ Numerical experiments compare the performance of each method on test datasets. T
 
 After *cross-validations*, the methods are tested over a *2 year period*: 2022-01-22 to 2024-01-22.
 <p align="center">
-  <img src="pystochoptim/Test/tests/equation.PNG" width="700"/>
+  <img src="pystochoptim/Test/tests/equation.PNG" width="500"/>
 </p>
 
 <p align="center">
-  <img src="pystochoptim/Test/tests/comparison_models.PNG" width="800"/>
+  <img src="pystochoptim/Test/tests/comparison_models.PNG" width="700"/>
 </p>
 
 More details can be found [in this presentation](https://github.com/dan-mim/EMS-RL-DRO/blob/main/EMS-RL-DRO-optim.pdf).
