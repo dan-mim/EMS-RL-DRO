@@ -14,8 +14,6 @@ This repository provides the implementation of advanced Energy Management System
 ## 🔍 Project Overview
 
 Modern EMS solutions must make sequential decisions under uncertainty. This repo implements and compares multiple decision-making strategies for EMS:
-- Model Predictive Control (MPC)
-- Deterministic-Stochastic Programming (DSP)
 - Distributionally Robust Optimization (DRO)
 - Reinforcement Learning (RL)
 
@@ -29,22 +27,19 @@ The repo is divided into three main modular packages:
 
 ### 🔧 `pyopticontrol/` 
 > Core EMS models and algorithms
-- MPC solver
-- Deterministic-Stochastic solver
 - DRO formulation and SDAP algorithm
 - Model definitions and battery constraints
 
 ### 🌲 `pyreductree/`  
 > Scenario tree reduction using nested Wasserstein barycenters  
-- Implements [Nested Tree Reduction](https://dan-mim.github.io/files/reduction_tree.pdf)
-- Boosted version of Kovacevic–Pichler’s algorithm using optimal transport (IBP or MAM)
+- Implements a boosted version of the Kovacevic-Pichler's [Nested Tree Reduction algorithm](https://dan-mim.github.io/files/reduction_tree.pdf) as in [this github](https://github.com/dan-mim/Nested_tree_reduction)
 - Compatible with large-scale scenario sets
 
 ### 🎯 `pystochoptim/`  
 > Stochastic & robust optimization primitives  
 - Problem abstraction for multistage control
 - Feasibility projections
-- Variance penalization / ambiguity set handling
+- Wasserstein ambiguity set handling
 
 ---
 
@@ -85,11 +80,11 @@ The cost is computed using real electricity prices and battery physics over a ti
 Solves a deterministic optimization at each time using a single forecasted scenario.
 
 ### 📉 Deterministic-Stochastic Programming (DSP)
-Computes a robust control against a set of scenarios with fixed probabilities.
+Computes a robust control against a set of scenarios with fixed probabilities. This algorithm belongs to IFPEN and is not provided in this open source repository.
 
 ### 🎲 Distributionally Robust Optimization (DRO)
 Uses an ambiguity set defined via the Wasserstein distance to hedge against distributional misspecification. The implementation follows the SDAP algorithm from:
-- [De Oliveira et al. (2021)](https://dan-mim.github.io/files/constrained_Wasserstein.pdf)
+- [De Oliveira et al. (2021)](https://link.springer.com/article/10.1007/s11228-021-00600-5)
 
 ### 🧠 Reinforcement Learning (RL)
 A tabular Q-learning agent learns directly from historical data to control the battery without any model assumptions.
@@ -105,9 +100,7 @@ Numerical experiments compare the performance of each method on test datasets. T
 ## 🧩 Theoretical Foundation
 
 This repo supports the findings and methodology presented in:
-
-- **Malisani, Mimouni et al.**, _"Variance-Penalized Distributionally Robust Optimization for Energy Systems"_ (IFPEN, 2024)  
-- **Mimouni et al.**, _"Constrained Wasserstein Barycenters"_: theoretical background for DRO with Wasserstein ambiguity sets.
+- **Mimouni et al.**_"A Comparative Study of Multi-Stage Stochastic Optimization Approaches for an Energy Management System"_(preprint 2025)
 
 ---
 
@@ -130,5 +123,5 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## 👤 Author
 
-Developed by [Dan Mim](https://github.com/dan-mim) in collaboration with IFPEN.
+Developed by [Daniel Mimouni](https://github.com/dan-mim) in collaboration with IFPEN.
 
