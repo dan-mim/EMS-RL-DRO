@@ -114,7 +114,7 @@ After *cross-validations*, the methods are tested over a *2 year period*: 2022-0
   <img src="pystochoptim/Test/tests/comparison_models.PNG" width="800"/>
 </p>
 
-More results can be found [here]()
+More details can be found [in this presentation](https://github.com/dan-mim/EMS-RL-DRO/blob/main/EMS-RL-DRO-optim.pdf).
 ---
 
 ## 🏢 Industrial Use Case
