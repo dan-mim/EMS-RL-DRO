@@ -110,6 +110,10 @@ After *cross-validations*, the methods are tested over a *2 year period*: 2022-0
   <img src="pystochoptim/Test/tests/equation.PNG" width="700"/>
 </p>
 
+<p align="center">
+  <img src="pystochoptim/Test/tests/comparison_models.PNG" width="800"/>
+</p>
+
 More results can be found [here]()
 ---
 
