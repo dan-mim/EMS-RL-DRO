@@ -10,6 +10,12 @@
 This repository provides the implementation of advanced Energy Management System (EMS) strategies combining **Reinforcement Learning (RL)** and **Distributionally Robust Optimization (DRO)**. The EMS problem considered involves managing a domestic battery under uncertain electricity consumption and photovoltaic production.
 
 ---
+## 🧩 Theoretical Foundation
+
+This repo supports the findings and methodology presented in:
+- **Mimouni et al.**_"A Comparative Study of Multi-Stage Stochastic Optimization Approaches for an Energy Management System"_(preprint 2025)
+
+---
 
 ## 🔍 Project Overview
 
@@ -60,6 +66,10 @@ If you use MPI for parallel computations (recommended for DRO/SDAP), install:
 conda install mpi4py
 ```
 
+Run the Test files to execute your favorite optimization methods. For exemple for DRO run:
+```bash
+python pystochoptim/Test/test_pystochoptim.py
+```
 ---
 
 ## 🔬 Problem Overview
@@ -94,13 +104,6 @@ A tabular Q-learning agent learns directly from historical data to control the b
 ## 📊 Numerical Experiments
 
 Numerical experiments compare the performance of each method on test datasets. The SDAP algorithm and the RL agent are shown to yield competitive results with good robustness.
-
----
-
-## 🧩 Theoretical Foundation
-
-This repo supports the findings and methodology presented in:
-- **Mimouni et al.**_"A Comparative Study of Multi-Stage Stochastic Optimization Approaches for an Energy Management System"_(preprint 2025)
 
 ---
 
