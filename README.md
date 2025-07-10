@@ -105,6 +105,12 @@ A tabular Q-learning agent learns directly from historical data to control the b
 
 Numerical experiments compare the performance of each method on test datasets. The SDAP algorithm and the RL agent are shown to yield competitive results with good robustness.
 
+After *cross-validations*, the methods are tested over a *2 year period*: 2022-01-22 to 2024-01-22.
+<p align="center">
+  <img src="pystochoptim/Test/tests/equation.PNG" width="700"/>
+</p>
+
+More results can be found [here]()
 ---
 
 ## 🏢 Industrial Use Case
